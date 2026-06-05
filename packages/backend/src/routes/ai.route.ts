@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { AiController } from '#src/controllers/ai.controller.js';
-import { authMiddleware } from '#src/middleware/auth.js';
+import { AiController } from '#src/controllers/ai.controller';
+import { authMiddleware } from '#src/middleware/auth';
 import { aiRateLimiter } from '#src/middleware/rateLimiter';
 
 const router = Router();

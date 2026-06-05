@@ -22,7 +22,7 @@ function runDefensiveParser(outputText: string): { explanation: string; suggeste
     
     rawExplanation = typeof rawParsed.explanation === 'object' ? Object.values(rawParsed.explanation).join("\n") : String(rawParsed.explanation || "");
     rawSuggestedFix = typeof rawParsed.suggestedFix === 'object' ? Object.values(rawParsed.suggestedFix).join("\n") : String(rawParsed.suggestedFix || "");
-  } catch (jsonParseError) {
+  } catch (_jsonParseError) {
     // Fallback string manipulation splitting if JSON tokens are misaligned
     if (outputText.includes('"explanation":')) {
       const expStart = outputText.indexOf('"explanation":') + 14;
@@ -32,7 +32,7 @@ function runDefensiveParser(outputText: string): { explanation: string; suggeste
     
     if (outputText.includes('"suggestedFix":')) {
       const fixStart = outputText.indexOf('"suggestedFix":') + 15;
-      rawSuggestedFix = outputText.substring(fixStart).replace(/[\}]/g, "").trim();
+      rawSuggestedFix = outputText.substring(fixStart).replace(/[}]/g, "").trim();
     }
   }
 

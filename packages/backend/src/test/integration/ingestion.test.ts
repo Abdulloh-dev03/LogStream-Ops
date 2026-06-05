@@ -1,8 +1,8 @@
 import request from 'supertest';
 import { describe, test, expect } from 'vitest';
-import { prisma } from '#src/lib/prisma.js';
-import app from '#src/app.js';
-import { hashApiKey, generateKeyPreview } from '#src/utils/crypto.js';
+import { prisma } from '#src/lib/prisma';
+import app from '#src/app';
+import { hashApiKey, generateKeyPreview } from '#src/utils/crypto';
 
 describe('POST /api/ingest - Log Ingestion Engine', () => {
 

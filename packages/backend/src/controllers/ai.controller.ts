@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { AiService } from '#src/services/ai.service.js';
+import { AiService } from '#src/services/ai.service';
 import { prisma } from '#src/lib/prisma';
 import { ForbiddenError, NotFoundError } from '#src/utils/errors';
 
@@ -47,12 +47,12 @@ export class AiController {
       }
 
       // Enforce Tenant Isolation Security
-      if ((analysis as any).log.project.userId !== userId) {
+      if (analysis.log.project.userId !== userId) {
         throw new ForbiddenError('You do not have permission to view this analysis.');
       }
 
       // Strip the log relation out before sending so the JSON stays clean
-      const { log, ...cleanAnalysis } = analysis as any;
+      const { log: _log, ...cleanAnalysis } = analysis;
 
       return res.status(200).json(cleanAnalysis);
     } catch (error) {

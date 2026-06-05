@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import type { Request, Response, NextFunction } from 'express';
-import logger from '#src/config/logger.js';
+import logger from '#src/config/logger';
 import authRoute from '#src/routes/auth.route.js';
 import projectRoute from '#src/routes/project.route.js';
 import logRoute from '#src/routes/log.route.js';

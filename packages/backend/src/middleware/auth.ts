@@ -4,17 +4,15 @@ import { jwttoken } from '../utils/jwt.js';
 import { prisma } from '../lib/prisma.js';
 import logger from '../config/logger.js';
 
-declare global {
-  namespace Express {
-    interface Request {
-      user?: {
-        id: string;
-        email: string;
-        firstname: string | null;
-        lastname: string | null;
-        createdAt: Date;
-      };
-    }
+declare module 'express-serve-static-core' {
+  interface Request {
+    user?: {
+      id: string;
+      email: string;
+      firstname: string | null;
+      lastname: string | null;
+      createdAt: Date;
+    };
   }
 }
 
@@ -75,7 +73,7 @@ export const authMiddleware = async (
     }
 
     // 4. Attach user data to the request object
-    req.user = user as any;
+    req.user = user;
     next();
   } catch (error) {
     logger.error("Authentication internal error:", error);

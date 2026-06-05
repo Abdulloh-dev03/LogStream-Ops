@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { CreateProjectSchema } from '@logstream/shared';
-import { ProjectService } from '#src/services/project.service.js';
-import { BadRequestError } from '#src/utils/errors.js';
+import { ProjectService } from '#src/services/project.service';
+import { BadRequestError } from '#src/utils/errors';
 
 /**
  * Project Controller

@@ -1,5 +1,5 @@
-import { prisma } from '#src/lib/prisma.js';
-import { ForbiddenError, NotFoundError } from '#src/utils/errors.js';
+import { prisma } from '#src/lib/prisma';
+import { ForbiddenError, NotFoundError } from '#src/utils/errors';
 import { LogLevel } from '@prisma/client';
 
 export interface LogQueryFilters {
