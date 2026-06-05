@@ -1,0 +1,73 @@
+name: Backend CI/CD (Render)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/backend/**'
+      - 'packages/shared/**'
+      - '.github/workflows/deploy-backend.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'packages/backend/**'
+      - 'packages/shared/**'
+      - '.github/workflows/deploy-backend.yml'
+
+jobs:
+  validate-and-deploy:
+    runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: logstream_test
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Linting
+        run: npm run lint -w @logstream/backend
+
+      - name: Type Verification
+        run: npm run type-check -w @logstream/backend
+
+      - name: Database Schema Sync (Test DB)
+        run: npm run db:migrate:deploy -w @logstream/backend
+        env:
+          DATABASE_URL: postgresql://postgres:password@localhost:5432/logstream_test
+
+      - name: Run Tests
+        run: npm run test -w @logstream/backend
+        env:
+          DATABASE_URL: postgresql://postgres:password@localhost:5432/logstream_test
+
+      - name: Production Database Migration
+        if: github.ref == 'refs/heads/main' && success()
+        run: npm run db:migrate:deploy -w @logstream/backend
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      - name: Trigger Render Deployment
+        if: github.ref == 'refs/heads/main' && success()
+        run: |
+          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}

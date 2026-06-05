@@ -1,0 +1,63 @@
+{
+  "name": "@logstream/backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch ./src/index.ts",
+    "test": "vitest run",
+    "lint": "eslint . --max-warnings 0",
+    "type-check": "tsc --noEmit",
+    "db:migrate:deploy": "prisma migrate deploy",
+    "build": "prisma generate && tsc",
+    "start": "NODE_ENV=production node --conditions=production dist/index.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "imports": {
+    "#src/*": "./src/*.js"
+  },
+  "dependencies": {
+    "@huggingface/inference": "^4.13.18",
+    "@logstream/shared": "*",
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.2",
+    "helmet": "^8.2.0",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.10.1",
+    "pg": "^8.21.0",
+    "socket.io": "^4.8.3",
+    "tsx": "^4.22.3",
+    "typescript": "^6.0.3",
+    "winston": "^3.19.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^20.19.41",
+    "@types/pg": "^8.20.0",
+    "@types/supertest": "^7.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.24.1",
+    "@typescript-eslint/parser": "^8.24.1",
+    "eslint": "^9.21.0",
+    "prisma": "^7.8.0",
+    "supertest": "^7.2.2",
+    "vitest": "^4.1.7"
+  }
+}
