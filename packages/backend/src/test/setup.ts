@@ -1,6 +1,6 @@
 import { config } from 'dotenv';
-import { beforeAll, afterEach, afterAll } from 'vitest'; 
-import { prisma } from '#src/lib/prisma';
+import { beforeAll, afterEach, afterAll } from 'vitest';
+import { prisma } from '../lib/prisma.js';
 
 // 1. Force the application into a test execution context
 process.env.NODE_ENV = 'test';

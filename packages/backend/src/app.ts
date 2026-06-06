@@ -4,14 +4,14 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import type { Request, Response, NextFunction } from 'express';
-import logger from '#src/config/logger';
-import authRoute from '#src/routes/auth.route.js';
-import projectRoute from '#src/routes/project.route.js';
-import logRoute from '#src/routes/log.route.js';
-import logQueryRoute from '#src/routes/log.query.route.js';
-import aiRoute from '#src/routes/ai.route.js';
-import { AppError } from '#src/utils/errors.js';
+import authRoute from './routes/auth.route.js';
+import projectRoute from './routes/project.route.js';
+import logRoute from './routes/log.route.js';
+import logQueryRoute from './routes/log.query.route.js';
+import aiRoute from './routes/ai.route.js';
+import { AppError } from './utils/errors.js';
 import cors from "cors";
+import logger from './config/logger.js';
 
 const app = express();
 

@@ -1,7 +1,7 @@
 import http from 'http';
 import { Server } from 'socket.io';
 import app from './app.js';
-import logger from '#src/config/logger.js';
+import logger from './config/logger.js';
 
 const PORT = Number(process.env.PORT) || 4000;
 

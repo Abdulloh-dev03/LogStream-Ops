@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { LogQueryController } from '#src/controllers/log.query.controller';
-import { authMiddleware } from '#src/middleware/auth';
+import { LogQueryController } from '../controllers/log.query.controller.js';
+import { authMiddleware } from '../middleware/auth.js';
 
 const router = Router();
 

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { LogQueryService } from '#src/services/log.query.service';
+import { LogQueryService } from '../services/log.query.service.js';
 import { LogLevel } from '@prisma/client';
 
 /**

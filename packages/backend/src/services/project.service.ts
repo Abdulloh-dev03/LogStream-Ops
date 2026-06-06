@@ -1,11 +1,11 @@
-import { prisma } from '#src/lib/prisma';
-import { ForbiddenError, NotFoundError } from '#src/utils/errors';
-import logger from '#src/config/logger';
+import { prisma } from '../lib/prisma.js';
+import { ForbiddenError, NotFoundError } from '../utils/errors.js';
+import logger from '../config/logger.js';
 import {
   generateSecureApiKey,
   hashApiKey,
   generateKeyPreview,
-} from '#src/utils/crypto';
+} from '../utils/crypto.js';
 
 /**
  * Project Service

@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { LogController } from '#src/controllers/log.controller';
-import { ingestRateLimiter } from '#src/middleware/rateLimiter';
+import { LogController } from '../controllers/log.controller.js';
+import { ingestRateLimiter } from '../middleware/rateLimiter.js';
 
 const router = Router();
 

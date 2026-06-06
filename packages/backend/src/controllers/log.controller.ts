@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { IngestLogSchema } from '@logstream/shared';
-import { LogService } from '#src/services/log.service';
-import { BadRequestError } from '#src/utils/errors';
-import logger from '#src/config/logger';
+import { LogService } from '../services/log.service.js';
+import { BadRequestError } from '../utils/errors.js';
+import logger from '../config/logger.js';
 
 /**
  * Log Controller

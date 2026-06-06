@@ -63,7 +63,7 @@ export default function ProjectsPage() {
   const [selectedFramework, setSelectedFramework] = useState<FrameworkKey>('express');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const INGESTION_API_URL = 'http://localhost:4000/api/ingest';
+  const INGESTION_API_URL = 'https://logstream-ops.onrender.com/api/ingest';
 
   const activeProjectKey = projects[0]?.keyPreview;
 

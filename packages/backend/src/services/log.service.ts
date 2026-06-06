@@ -1,7 +1,7 @@
-import { prisma } from '#src/lib/prisma';
-import { NotFoundError } from '#src/utils/errors';
+import { prisma } from '../lib/prisma.js';
+import { NotFoundError } from '../utils/errors.js';
 import { IngestLogInput } from '@logstream/shared';
-import { hashApiKey, timingSafeMatch } from '#src/utils/crypto';
+import { hashApiKey, timingSafeMatch } from '../utils/crypto.js';
 
 /**
  * Log Service

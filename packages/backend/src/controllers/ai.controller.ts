@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import { AiService } from '#src/services/ai.service';
-import { prisma } from '#src/lib/prisma';
-import { ForbiddenError, NotFoundError } from '#src/utils/errors';
+import { AiService } from '../services/ai.service.js';
+import { prisma } from '../lib/prisma.js';
+import { ForbiddenError, NotFoundError } from '../utils/errors.js';
 
 /**
  * AI Controller

@@ -1,7 +1,7 @@
 import { InferenceClient } from "@huggingface/inference";
-import { prisma } from "#src/lib/prisma";
-import logger from "#src/config/logger";
-import { NotFoundError, ForbiddenError } from "#src/utils/errors";
+import { prisma } from "../lib/prisma.js";
+import logger from "../config/logger.js";
+import { NotFoundError, ForbiddenError } from "../utils/errors.js";
 import { z } from "zod";
 // Clean Type Checking for the AI Outputs
 

@@ -11,7 +11,7 @@
     "type-check": "tsc --noEmit",
     "db:migrate:deploy": "prisma migrate deploy",
     "build": "prisma generate && tsc",
-    "start": "NODE_ENV=production node --conditions=production dist/src/index.js"
+    "start": "NODE_ENV=production node --conditions=production dist/index.js"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -20,9 +20,6 @@
   "author": "",
   "license": "ISC",
   "type": "module",
-  "imports": {
-    "#src/*": "./src/*.js"
-  },
   "dependencies": {
     "@huggingface/inference": "^4.13.18",
     "@logstream/shared": "*",
