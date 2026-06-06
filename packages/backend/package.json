@@ -10,7 +10,7 @@
     "lint": "eslint . --max-warnings 0",
     "type-check": "tsc --noEmit",
     "db:migrate:deploy": "prisma migrate deploy",
-    "build": "prisma generate && tsc",
+    "build": "npm run build --workspace=@logstream/shared && prisma generate && tsc",
     "start": "NODE_ENV=production node --conditions=production dist/src/index.js"
   },
   "engines": {
